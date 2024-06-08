@@ -10,6 +10,7 @@ import 'package:tyba_test/src/feature/details/package.dart';
 import 'package:tyba_test/src/utilities/package.dart';
 
 import '../../configs/host_config/host_environment.dart';
+import '../../configs/url_launcher_config/url_launcher_service.dart';
 import '../../shared/package.dart';
 
 part 'models/pokemon_response_model.dart';

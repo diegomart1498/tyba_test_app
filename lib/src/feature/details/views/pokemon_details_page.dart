@@ -20,13 +20,19 @@ class PokemonDetailsPage extends ConsumerWidget {
 
     return PageWrapper(
       hasBackButton: true,
-      body: Column(
+      bottomNavigationBar: pokemonById.when(
+        data: (pokemon) => BottomBarSearchButton(pokemon),
+        error: (_, __) => const SizedBox.shrink(),
+        loading: () => const SizedBox.shrink(),
+      ),
+      body: ListView(
         children: [
           gapH24,
           pokemonById.when(
             data: (pokemon) => Text(
               pokemon?.name.capitalize ?? '',
               style: context.textStyles.h4.semiBold.black,
+              textAlign: TextAlign.center,
             ),
             loading: () => const TextShimmer(height: UISize.p32),
             error: (_, __) => const SizedBox.shrink(),

@@ -42,4 +42,13 @@ class PokemonNotifier extends StateNotifier<PokemonState> {
       return null;
     }
   }
+
+  Future<void> searchPokemonInGoogle(
+    Pokemon? pokemon,
+    BuildContext context,
+  ) async {
+    final String pokemonName = pokemon?.name ?? '';
+    final String url = 'https://www.google.com/search?q=$pokemonName';
+    await UrlLauncherService.launch(url, context);
+  }
 }

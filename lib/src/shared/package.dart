@@ -9,6 +9,7 @@ import 'package:shimmer/shimmer.dart';
 
 import '../configs/ui_constants_config/ui/ui.dart';
 
+part 'bottom_bar_tamplate.dart';
 part 'custom_back_button.dart';
 part 'custom_cached_network_image.dart';
 part 'end_page_divider.dart';
