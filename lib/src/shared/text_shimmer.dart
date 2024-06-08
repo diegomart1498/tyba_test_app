@@ -23,8 +23,8 @@ class TextShimmer extends StatelessWidget {
               BorderRadius.all(Radius.circular(borderRadius ?? UISize.p4)),
           color: Colors.amber,
         ),
-        height: height ?? 20,
-        width: width ?? double.infinity,
+        height: height ?? UISize.p20,
+        width: width ?? UISize.p144,
       ),
     );
   }

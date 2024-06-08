@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 import '../configs/routing_config/package.dart';
-import '../shared/package.dart';
 
 class MainApp extends ConsumerWidget {
   const MainApp({super.key});
@@ -22,8 +21,6 @@ class MainApp extends ConsumerWidget {
         GlobalCupertinoLocalizations.delegate,
         FormBuilderLocalizations.delegate,
       ],
-      builder: (BuildContext context, Widget? child) =>
-          LoadingOverlay(child: child),
     );
   }
 }

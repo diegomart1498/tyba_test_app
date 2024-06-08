@@ -14,15 +14,23 @@ class PokemonImageCard extends StatelessWidget {
     return Align(
       child: InkWell(
         borderRadius: BorderRadius.circular(UISize.p4),
-        onTap: () =>
-            loggwtf('$pokemonId $imageUrl'), //TODO: navigate to details page
+        onTap: () => context.goNamed(
+          PokemonDetailsPage.routeName,
+          queryParameters: {
+            'pokemonImage': imageUrl,
+            'pokemonId': '$pokemonId',
+          },
+        ),
         child: Container(
           margin: padding4,
           height: UISize.p144,
           width: UISize.p144,
-          child: CustomCachedNetworkImage(
-            imageUrl,
-            borderRadius: BorderRadius.circular(UISize.p4),
+          child: Hero(
+            tag: imageUrl,
+            child: CustomCachedNetworkImage(
+              imageUrl,
+              borderRadius: BorderRadius.circular(UISize.p4),
+            ),
           ),
         ),
       ),

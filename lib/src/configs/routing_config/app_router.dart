@@ -14,21 +14,22 @@ class AppRouter {
         GoRoute(
           path: HomePage.route,
           builder: (context, state) => const HomePage(),
+          routes: [
+            GoRoute(
+              path: PokemonDetailsPage.route,
+              name: PokemonDetailsPage.routeName,
+              builder: (context, state) {
+                final String pokemonImage =
+                    state.uri.queryParameters['pokemonImage'].toString();
+                final int pokemonId = int.parse(
+                    state.uri.queryParameters['pokemonId'].toString());
+                return PokemonDetailsPage(
+                  pokemonImage: pokemonImage,
+                  pokemonId: pokemonId,
+                );
+              },
+            ),
+          ],
         ),
-        // GoRoute(
-        //   path: LoginPage.route,
-        //   builder: (context, state) => const LoginPage(),
-        //   pageBuilder: fadePageBuilder(const LoginPage()),
-        //   routes: [
-        //     GoRoute(
-        //       path: RecoveryPasswordPage.route,
-        //       builder: (context, state) => const RecoveryPasswordPage(),
-        //       pageBuilder: slidePageBuilder(
-        //         child: const RecoveryPasswordPage(),
-        //         slideFrom: SlideFrom.rigth,
-        //       ),
-        //     ),
-        //   ],
-        // ),
       ];
 }

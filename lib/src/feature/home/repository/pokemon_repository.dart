@@ -26,8 +26,6 @@ class PokemonRepository {
     final response = await http.get(url, headers: headers);
     final Map<String, dynamic> decodedData = json.decode(response.body);
     if (response.statusCode != 200) throw Exception('Error getting pokemon');
-
-    debugPrint(decodedData.toString());
     return Pokemon.fromJson(decodedData);
   }
 }
