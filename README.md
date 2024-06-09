@@ -1,16 +1,31 @@
-# tyba_test
+# Proyecto Flutter para Prueba Técnica en Tyba (Front Engineer)
 
-A new Flutter project.
+Este es un proyecto de ejemplo desarrollado en Flutter como parte de una prueba técnica. El propósito del proyecto es demostrar mis habilidades en el desarrollo de aplicaciones móviles utilizando Flutter.
 
-## Getting Started
+## Tabla de Contenidos
+- [Descripción](#descripción)
+- [Requisitos](#requisitos)
+- [Estructura del Proyecto](#estructura-del-proyecto)
 
-This project is a starting point for a Flutter application.
+## Descripción
+La aplicación muestra un listado de pokemones sobre los cuales se pueden ver sus detalles, además la aplicación cuenta con un filtro persistente de búsqueda basado en sus habilidades.
 
-A few resources to get you started if this is your first Flutter project:
+## Requisitos
+- Elegir un API de interés (API Pokemons).
+- Visualizar los datos de la API.
+- Crear una vista de detalles de cada ítem con una animación Hero.
+- Filtrar datos y persistir la información de los filtros al cerrar y abrir la aplicación.
+- Desde la vista de detalles navegar a una página externa para buscar más info sobre el ítem.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Estructura
+lib/
+│
+├── main.dart            # Punto de entrada de la aplicación
+├── src.dart             # Código fuente de la aplicación
+├──── app/               # Configuración de la navegación de la aplicación
+├──── configs/           # Configuraciones generales de funcionalidades requeridas a lo largo de la aplicación
+├──── feature/           # Características principales de la aplicación
+├──────── home/          # Vista inicial de la aplicación (Pokemons)
+├──────── details/       # Vista de detalles de cada Pokemons
+├──── shared/            # Widgets reutilizables que son compartidos a lo largo de la aplicación
+└──── utilities/         # Utilidades generales usadas para toda la aplicación
