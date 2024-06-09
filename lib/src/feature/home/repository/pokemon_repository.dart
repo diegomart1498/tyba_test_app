@@ -28,4 +28,23 @@ class PokemonRepository {
     if (response.statusCode != 200) throw Exception('Error getting pokemon');
     return Pokemon.fromJson(decodedData);
   }
+
+  Future<List<String>> getPokemonsAbilities({
+    required int offset,
+    required int limit,
+  }) async {
+    final Uri url = Uri.parse('$_baseUrl/ability?offset=$offset&$limit=20');
+
+    final Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Accept': '*/*',
+    };
+
+    final response = await http.get(url, headers: headers);
+    final Map<String, dynamic> decodedData = json.decode(response.body);
+    if (response.statusCode != 200) {
+      throw Exception('Error getting pokemon abilities');
+    }
+    return PokemonAbilities.fromJson(decodedData).abilities;
+  }
 }

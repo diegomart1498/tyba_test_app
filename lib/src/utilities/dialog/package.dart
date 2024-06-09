@@ -8,4 +8,5 @@ import 'package:flutter/services.dart';
 import '../../configs/ui_constants_config/ui/ui.dart';
 
 part 'show_alert_dialog.dart';
+part 'show_custom_dialog.dart';
 part 'show_exception_alert_dialog.dart';

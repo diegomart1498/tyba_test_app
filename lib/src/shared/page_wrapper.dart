@@ -5,12 +5,14 @@ class PageWrapper extends StatelessWidget {
     required this.body,
     this.hasBackButton = false,
     this.bottomNavigationBar,
+    this.actions = const [],
     super.key,
   });
 
   final Widget body;
   final bool hasBackButton;
   final Widget? bottomNavigationBar;
+  final List<Widget> actions;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class PageWrapper extends StatelessWidget {
         title: const Text('Pokemon App'),
         elevation: UISize.p2,
         centerTitle: true,
+        actions: actions,
         leading: hasBackButton ? const CustomBackButton() : null,
       ),
       body: body,
