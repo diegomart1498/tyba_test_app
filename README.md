@@ -18,6 +18,7 @@ La aplicación muestra un listado de pokemones sobre los cuales se pueden ver su
 - Desde la vista de detalles navegar a una página externa para buscar más info sobre el ítem.
 
 ## Estructura
+```plaintext
 lib/
 │
 ├── main.dart            # Punto de entrada de la aplicación
