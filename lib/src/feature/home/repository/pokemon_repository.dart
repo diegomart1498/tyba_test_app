@@ -47,4 +47,21 @@ class PokemonRepository {
     }
     return PokemonAbilities.fromJson(decodedData).abilities;
   }
+
+  Future<List<String>> getPokemonsByAbility(String ability) async {
+    final Uri url = Uri.parse('$_baseUrl/ability/$ability');
+
+    final Map<String, String> headers = {
+      'Content-Type': 'application/json',
+      'Accept': '*/*',
+    };
+
+    final response = await http.get(url, headers: headers);
+    final Map<String, dynamic> decodedData = json.decode(response.body);
+    if (response.statusCode != 200) {
+      throw Exception('Error getting pokemon by abilities');
+    }
+    return List<String>.from(
+        decodedData["pokemon"].map((x) => x['pokemon']['name']));
+  }
 }

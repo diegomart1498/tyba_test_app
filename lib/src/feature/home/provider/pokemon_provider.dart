@@ -10,6 +10,11 @@ final pokemonByIdProvider =
   return ref.watch(pokemonProvider.notifier).getPokemonById(pokemonId);
 });
 
+final pokemonByAbilityProvider =
+    FutureProvider.family.autoDispose<List<String>, String?>((ref, ability) {
+  return ref.watch(pokemonProvider.notifier).getPokemonsByAbility(ability);
+});
+
 class PokemonNotifier extends StateNotifier<PokemonState> {
   PokemonNotifier(this.ref) : super(const PokemonState());
   StateNotifierProviderRef<PokemonNotifier, PokemonState> ref;
@@ -64,6 +69,20 @@ class PokemonNotifier extends StateNotifier<PokemonState> {
       return pokemonsAbilities;
     } catch (error, stack) {
       logge('getPokemonsAbilitiesByPage -> $error $stack');
+      return [];
+    }
+  }
+
+  Future<List<String>> getPokemonsByAbility(String? ability) async {
+    if (ability == null) return [];
+    try {
+      final List<String> pokemons = await ref
+          .read(pokemonRepositoryProvider)
+          .getPokemonsByAbility(ability);
+      loggwtf(pokemons);
+      return pokemons;
+    } catch (error, stack) {
+      logge('getPokemonByAbility -> $error $stack');
       return [];
     }
   }

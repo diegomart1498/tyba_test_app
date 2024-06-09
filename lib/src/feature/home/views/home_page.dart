@@ -22,6 +22,8 @@ class _HomePageState extends ConsumerState<HomePage> {
   Widget build(BuildContext context) {
     final PokemonNotifier pokemonNotifier = ref.read(pokemonProvider.notifier);
     final String? selectedAbility = ref.watch(pokemonProvider).ability;
+    final AsyncValue<List<String>> pokemonsByAbility =
+        ref.watch(pokemonByAbilityProvider(selectedAbility));
 
     return PageWrapper(
       actions: const [AbilityFilterButton()],
@@ -50,8 +52,18 @@ class _HomePageState extends ConsumerState<HomePage> {
               ),
             ),
           if (selectedAbility != null)
-            const Expanded(
-              child: Text('Filter result'),
+            pokemonsByAbility.when(
+              data: (pokemos) => Flexible(
+                child: ListView(
+                  children: [
+                    ...pokemos.map(
+                      (pokemon) => PokemonAbilityTile(pokemon),
+                    ),
+                  ],
+                ),
+              ),
+              error: (_, __) => const SizedBox.shrink(),
+              loading: () => const Align(child: CircularProgressIndicator()),
             ),
         ],
       ),
